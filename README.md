@@ -1,6 +1,6 @@
 # Game Dev using p5.js
 
-# Contents of the folders
+## Contents of the folders
 
 - framework folder
   - libraries
