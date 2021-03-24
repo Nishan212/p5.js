@@ -11,7 +11,7 @@ function setup() {
 }
 
 function draw() {
-  background(55, 100, 144);
+  background(25, 189, 128);
   particles.forEach((p, index) => {
     p.update();
     p.draw();
@@ -26,7 +26,7 @@ class Particle {
     // Velocity
     this.vel = createVector(random(-2, 2), random(-2, 2));
     // Size
-    this.size = 8;
+    this.size = 4;
   }
 
   // Update movement by adding velocity
@@ -57,9 +57,14 @@ class Particle {
   checkParticles(particles) {
     particles.forEach((particle) => {
       const d = dist(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
+      let d_max = 150;
+      let alpha_max = 1;
 
-      if (d < 120) {
-        stroke("rgba(255, 255, 255, 0.2)");
+      if (d < d_max) {
+        // alpha for fading effect of the line
+        alpha = ((d_max - d) * alpha_max) / d_max;
+
+        stroke(`rgba(255, 255, 255, ${alpha})`);
         line(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
       }
     });
